@@ -104,7 +104,7 @@ class HomeViewModel @Inject constructor(
                     emit(probeVohive())
                     delay(VOHIVE_PROBE_INTERVAL_MS)
                 }
-            } else flowOf(AppExtensionStatus.VmNotRunning)
+            } else flowOf<AppExtensionStatus>(AppExtensionStatus.VmNotRunning)
         }
         .stateIn(viewModelScope, SharingStarted.Eagerly, AppExtensionStatus.VmNotRunning)
 
