@@ -177,7 +177,7 @@ RUN cd linux-${KERNEL_VERSION} \
 # mediatek, renesas, hardware-specific drivers) is dead weight in a VM.
 # init-podroid runs `depmod -a` at boot so we don't need to regenerate modules.dep here.
 RUN cd /modules/lib/modules/*/kernel \
-    && find . -name '*.ko' | grep -vE '(^\./net/(bridge|netfilter|9p|ipv4/netfilter|ipv6/netfilter)/|^\./fs/(9p|fuse|overlayfs)/|^\./drivers/net/(tun|veth|virtio_net)\.ko|^\./drivers/block/virtio_blk\.ko|^\./drivers/char/hw_random/virtio-rng\.ko|^\./drivers/virtio/)' \
+    && find . -name '*.ko' | grep -vE '(^\./net/(bridge|netfilter|9p|ipv4/netfilter|ipv6/netfilter)/|^\./fs/(9p|fuse|overlayfs)/|^\./drivers/net/(tun|veth|virtio_net)\.ko|^\./drivers/net/usb/(qmi_wwan|cdc_ether|cdc_ncm|cdc_mbim|usbnet)\.ko|^\./drivers/block/virtio_blk\.ko|^\./drivers/char/hw_random/virtio-rng\.ko|^\./drivers/usb/class/cdc-wdm\.ko|^\./drivers/virtio/)' \
     | xargs rm -f \
     && find . -type d -empty -delete
 
