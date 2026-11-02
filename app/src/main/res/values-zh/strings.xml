@@ -216,6 +216,18 @@
     <string name="home_action_backup">备份</string>
     <string name="home_action_status">状态</string>
 
+    <!-- App Extensions section -->
+    <string name="app_extensions">应用扩展</string>
+    <string name="app_extensions_vm_offline">虚拟机未运行</string>
+    <string name="app_extensions_not_installed">未安装</string>
+    <string name="app_extensions_installed">已安装</string>
+    <string name="app_extensions_running">运行中</string>
+    <string name="app_extensions_unknown">未知</string>
+    <string name="vohive_name">vohive</string>
+    <string name="vohive_install">安装 vohive</string>
+    <string name="vohive_start">启动 vohive</string>
+    <string name="vohive_webui">WebUI</string>
+
     <string name="up">运行中</string>
     <string name="uptime_hours_minutes">%1$d小时%2$d分钟</string>
     <string name="uptime_minutes_seconds">%1$d分%2$d秒</string>

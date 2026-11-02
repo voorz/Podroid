@@ -216,6 +216,18 @@
     <string name="home_action_backup">Backup</string>
     <string name="home_action_status">Status</string>
 
+    <!-- App Extensions section -->
+    <string name="app_extensions">App Extensions</string>
+    <string name="app_extensions_vm_offline">VM offline</string>
+    <string name="app_extensions_not_installed">Not installed</string>
+    <string name="app_extensions_installed">Installed</string>
+    <string name="app_extensions_running">Running</string>
+    <string name="app_extensions_unknown">Unknown</string>
+    <string name="vohive_name">vohive</string>
+    <string name="vohive_install">Install vohive</string>
+    <string name="vohive_start">Start vohive</string>
+    <string name="vohive_webui">WebUI</string>
+
     <string name="up">Up</string>
     <string name="uptime_hours_minutes">%1$dh %2$dm</string>
     <string name="uptime_minutes_seconds">%1$dm %2$ds</string>

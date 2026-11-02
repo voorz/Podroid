@@ -115,6 +115,8 @@ fun PodroidNavGraph(
                 onNavigateToContainerBackup = {
                     navController.navigate(Routes.CONTAINER_BACKUP) { launchSingleTop = true }
                 },
+                onInstallVohive = { /* TODO: trigger vohive install in container */ },
+                onStartVohive = { /* TODO: trigger vohive start in container */ },
             )
         }
 

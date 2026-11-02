@@ -400,6 +400,13 @@ class PodroidService : Service() {
                         rules.add(com.excp.podroid.data.repository.PortForwardRule(X11Constants.AUDIO_PORT, X11Constants.AUDIO_PORT, "tcp", loopbackOnly = true))
                     }
 
+                    // vohive WebUI forward — always injected so the app extension
+                    // section can open the browser to <phone-ip>:7575 without the
+                    // user needing to manually add a port-forward rule.
+                    if (rules.none { it.hostPort == VOHIVE_HOST_PORT }) {
+                        rules.add(com.excp.podroid.data.repository.PortForwardRule(VOHIVE_HOST_PORT, VOHIVE_HOST_PORT, "tcp"))
+                    }
+
                     val config = VmConfig(
                         ramMb = settingsRepository.getVmRamMbSnapshot(),
                         cpus = settingsRepository.getVmCpusSnapshot(),
@@ -585,6 +592,7 @@ class PodroidService : Service() {
         const val ACTION_START   = "com.excp.podroid.action.START"
         const val ACTION_STOP    = "com.excp.podroid.action.STOP"
         const val SSH_HOST_PORT  = 9922
+        const val VOHIVE_HOST_PORT = 7575
 
         fun start(context: Context) {
             val intent = Intent(context, PodroidService::class.java).apply {
