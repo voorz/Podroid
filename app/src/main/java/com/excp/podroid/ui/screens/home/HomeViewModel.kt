@@ -52,9 +52,6 @@ data class HomeMeta(
         if (mb >= 1024) "${mb / 1024} GB" else "$mb MB"
 }
 
-private const val VOHIVE_PROBE_INTERVAL_MS = 10_000L  // poll every 10s
-private const val VOHIVE_PROBE_TIMEOUT_MS  = 3_000L   // 3s connect/read timeout
-
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
@@ -79,56 +76,6 @@ class HomeViewModel @Inject constructor(
     // works identically on both backends, no polling needed.
     val containerCount: StateFlow<Int?> = settingsRepository.lastContainerCount
         .stateIn(viewModelScope, SharingStarted.Eagerly, null)
-
-    /**
-     * Status of the vohive app extension inside the running VM.
-     *
-     * When the VM is not running the status is [AppExtensionStatus.VmNotRunning]
-     * so the section greys out. When the VM is Running we poll the vohive WebUI
-     * at `http://127.0.0.1:7575/api/system/info` every 10 seconds:
-     *
-     * - HTTP 200 → [AppExtensionStatus.Running] with the WebUI URL
-     * - Connection refused / timeout → [AppExtensionStatus.NotInstalled]
-     *   (port 7575 is always forwarded, so a refused connection means vohive
-     *   hasn't been installed or started yet)
-     *
-     * The probe uses loopback (127.0.0.1) which maps to the QEMU hostfwd /
-     * AVF vsock port forward bound on the Android side.
-     */
-    val vohiveStatus: StateFlow<AppExtensionStatus> = vmState
-        .map { it is VmState.Running }
-        .distinctUntilChanged()
-        .flatMapLatest { isRunning ->
-            if (isRunning) flow {
-                while (true) {
-                    emit(probeVohive())
-                    delay(VOHIVE_PROBE_INTERVAL_MS)
-                }
-            } else flowOf<AppExtensionStatus>(AppExtensionStatus.VmNotRunning)
-        }
-        .stateIn(viewModelScope, SharingStarted.Eagerly, AppExtensionStatus.VmNotRunning)
-
-    private suspend fun probeVohive(): AppExtensionStatus {
-        return withTimeoutOrNull(VOHIVE_PROBE_TIMEOUT_MS) {
-            runCatching {
-                val url = java.net.URL("http://127.0.0.1:${PodroidService.VOHIVE_HOST_PORT}/api/system/info")
-                val conn = url.openConnection() as java.net.HttpURLConnection
-                conn.connectTimeout = VOHIVE_PROBE_TIMEOUT_MS.toInt()
-                conn.readTimeout = VOHIVE_PROBE_TIMEOUT_MS.toInt()
-                conn.requestMethod = "GET"
-                try {
-                    val code = conn.responseCode
-                    if (code == 200) {
-                        AppExtensionStatus.Running("http://${phoneIp()}:${PodroidService.VOHIVE_HOST_PORT}")
-                    } else {
-                        AppExtensionStatus.InstalledNotRunning
-                    }
-                } finally {
-                    conn.disconnect()
-                }
-            }.getOrNull() ?: AppExtensionStatus.NotInstalled
-        } ?: AppExtensionStatus.Unknown
-    }
 
     /** Aggregated metadata for the Home data sections. */
     val meta: StateFlow<HomeMeta> = combine(

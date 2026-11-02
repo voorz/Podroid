@@ -87,8 +87,6 @@ fun HomeScreen(
     onNavigateToSettings: () -> Unit,
     onNavigateToStatus: () -> Unit,
     onNavigateToContainerBackup: () -> Unit,
-    onInstallVohive: () -> Unit,
-    onStartVohive: () -> Unit,
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
     val context = LocalContext.current
@@ -104,7 +102,6 @@ fun HomeScreen(
     val avfNetWorkaroundFailed by viewModel.avfNetWorkaroundFailed.collectAsStateWithLifecycle()
     val stopping by viewModel.stopping.collectAsStateWithLifecycle()
     val containerCount by viewModel.containerCount.collectAsStateWithLifecycle()
-    val vohiveStatus by viewModel.vohiveStatus.collectAsStateWithLifecycle()
 
     val isRunning  = vmState is VmState.Running
     val isStarting = vmState is VmState.Starting
@@ -248,13 +245,6 @@ fun HomeScreen(
                         HomeDataSection(
                             isRunning, isStopping, vmState, meta, phoneIp, containerCount,
                         )
-                        AppExtensionsSection(
-                            isRunning = isRunning,
-                            vohiveStatus = vohiveStatus,
-                            phoneIp = phoneIp,
-                            onInstallVohive = onInstallVohive,
-                            onStartVohive = onStartVohive,
-                        )
                     }
                     Column(
                         modifier = Modifier
@@ -315,13 +305,6 @@ fun HomeScreen(
                         onRetry = { viewModel.restartVm() },
                     )
                     HomeDataSection(isRunning, isStopping, vmState, meta, phoneIp, containerCount)
-                    AppExtensionsSection(
-                        isRunning = isRunning,
-                        vohiveStatus = vohiveStatus,
-                        phoneIp = phoneIp,
-                        onInstallVohive = onInstallVohive,
-                        onStartVohive = onStartVohive,
-                    )
                     Spacer(Modifier.weight(1f))
                     HomeActionButtons(
                         isRunning = isRunning,

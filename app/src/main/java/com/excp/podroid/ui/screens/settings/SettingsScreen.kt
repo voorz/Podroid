@@ -755,6 +755,12 @@ private fun PortForwardSection(
         purpose = stringResource(R.string.port_forward_purpose_audio),
         dimmed = false,
     )
+    ReservedForwardRow(
+        hostPort = PodroidService.VOHIVE_HOST_PORT,
+        guestPort = PodroidService.VOHIVE_HOST_PORT,
+        purpose = stringResource(R.string.port_forward_purpose_vohive),
+        dimmed = false,
+    )
     LazyColumn(
         modifier = Modifier.heightIn(max = 360.dp),
     ) {

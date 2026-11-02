@@ -56,7 +56,7 @@
     <string name="ram_label">RAM</string>
     <string name="network_label">Network</string>
     <string name="ssh_access">SSH access</string>
-    <string name="ssh_password_hint">ssh root@&lt;phone-ip&gt; -p 9922   (password: podroid)</string>
+    <string name="ssh_password_hint">ssh root@&lt;phone-ip&gt; -p 9922   (password: root)</string>
     <string name="load_balance">Load balance</string>
     <string name="load_balance_description">Automatically tune CPU, RAM, storage, and bandwidth for this device.</string>
     <string name="load_balance_resources_hint">Set automatically by load balance. Turn it off on the previous step to pick these yourself.</string>
@@ -131,6 +131,7 @@
     <string name="port_forward_purpose_ssh_off">SSH (off)</string>
     <string name="port_forward_purpose_vnc">Desktop, this phone only</string>
     <string name="port_forward_purpose_audio">Desktop audio, this phone only</string>
+    <string name="port_forward_purpose_vohive">VoHive WebUI</string>
     <string name="port_forwards_count">Port forwards (%1$d)</string>
     <string name="port_forwards_clean">Clean all</string>
     <string name="port_forwards_clean_confirm_title">Remove all port forwards?</string>
@@ -215,18 +216,6 @@
     <string name="home_containers_unknown">—</string>
     <string name="home_action_backup">Backup</string>
     <string name="home_action_status">Status</string>
-
-    <!-- App Extensions section -->
-    <string name="app_extensions">App Extensions</string>
-    <string name="app_extensions_vm_offline">VM offline</string>
-    <string name="app_extensions_not_installed">Not installed</string>
-    <string name="app_extensions_installed">Installed</string>
-    <string name="app_extensions_running">Running</string>
-    <string name="app_extensions_unknown">Unknown</string>
-    <string name="vohive_name">vohive</string>
-    <string name="vohive_install">Install vohive</string>
-    <string name="vohive_start">Start vohive</string>
-    <string name="vohive_webui">WebUI</string>
 
     <string name="up">Up</string>
     <string name="uptime_hours_minutes">%1$dh %2$dm</string>
