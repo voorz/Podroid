@@ -141,8 +141,8 @@ Podroid ships 122 terminal color schemes covering most of the popular ecosystem 
 
 Podroid itself is developed by **[ExTV](https://github.com/ExTV)** and contributors.
 
-- Repository: https://github.com/ExTV/Podroid
-- Website: https://extv.github.io/Podroid/
+- Repository: https://github.com/voorz/Podroid
+- Website: https://voorz.github.io/Podroid/
 - License: GNU General Public License v2.0 (or later)
 
 If you have contributed code, themes, fonts, or bug reports and would like to be listed here, please open an issue or a pull request.
@@ -151,4 +151,4 @@ If you have contributed code, themes, fonts, or bug reports and would like to be
 
 ## Reporting missing or incorrect attribution
 
-We take attribution seriously. If you believe your work is shipped in Podroid but not properly credited, or if any information above is incorrect, please [open an issue](https://github.com/ExTV/Podroid/issues/new) and we will get it fixed quickly.
+We take attribution seriously. If you believe your work is shipped in Podroid but not properly credited, or if any information above is incorrect, please [open an issue](https://github.com/voorz/Podroid/issues/new) and we will get it fixed quickly.

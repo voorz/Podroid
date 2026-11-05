@@ -586,7 +586,7 @@ private fun AboutSection(
     val uriHandler = LocalUriHandler.current
     PodroidGhostButton(
         text = stringResource(R.string.documentation),
-        onClick = { uriHandler.openUri("https://extv.github.io/Podroid/guide/") },
+        onClick = { uriHandler.openUri("https://voorz.github.io/Podroid/guide/") },
     )
     Spacer(Modifier.height(PodroidTokens.Spacing.SM))
     PodroidGhostButton(

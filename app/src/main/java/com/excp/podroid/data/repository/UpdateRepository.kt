@@ -142,7 +142,7 @@ class UpdateRepository @Inject constructor(
                 return@withContext null
             }
 
-            connection = URL("https://api.github.com/repos/ExTV/Podroid/releases/latest")
+            connection = URL("https://api.github.com/repos/voorz/Podroid/releases/latest")
                 .openConnection() as java.net.HttpURLConnection
             connection.connectTimeout = 5000
             connection.readTimeout = 5000

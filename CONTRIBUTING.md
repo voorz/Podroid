@@ -7,7 +7,7 @@ Before you start, please skim [`CLAUDE.md`](CLAUDE.md). It documents the VM-engi
 ## Getting started
 
 ```sh
-git clone https://github.com/ExTV/Podroid.git
+git clone https://github.com/voorz/Podroid.git
 cd Podroid
 ```
 
